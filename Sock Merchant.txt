@@ -1,0 +1,49 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the sockMerchant function below.
+def sockMerchant(n, ar):
+    '''
+    One method -- 
+    print(n)
+    print(ar)
+    print(set(ar))
+    pairs = 0
+    for element in set(ar):
+        print(element, ar.count(element), ar.count(element)//2)
+        pairs += ar.count(element)//2
+    print(pairs)
+    return (pairs)
+    '''
+    '''
+    Other method
+    print(sum(ar.count(x)//2 for x in set(ar)))
+    return sum(ar.count(x)//2 for x in set(ar))
+    '''
+    # One more
+    from collections import Counter
+    counter = Counter(ar)
+    print(sum(i//2 for i in counter.values()))
+    return sum(i//2 for i in counter.values())
+    
+
+    
+    
+    
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    ar = list(map(int, input().rstrip().split()))
+
+    result = sockMerchant(n, ar)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()

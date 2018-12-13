@@ -1,0 +1,48 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+# Complete the diagonalDifference function below.
+def diagonalDifference(arr):
+    arr2 = [item for sublist in arr for item in sublist]
+    diag1 = []
+    diag2 = []
+    #n_columns = len(arr[0])
+    diag1_counter = 0
+    diag2_counter = len(arr[0])-1
+    #d1 = len(arr[0]) + 1
+    #d2 = len(arr[0]) - 1
+    
+    for i in range(len(arr[0])):
+        diag1.append(arr2[diag1_counter])
+        diag2.append(arr2[diag2_counter])
+        diag1_counter = diag1_counter + (len(arr[0]) + 1)
+        diag2_counter = diag2_counter + (len(arr[0]) - 1)
+    
+    #print(abs(sum(diag1) - sum(diag2)))
+    return abs(sum(diag1) - sum(diag2))
+    
+    #print(arr2)
+    #flat_list = [item for sublist in l for item in sublist]
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    arr = []
+
+    for _ in range(n):
+        arr.append(list(map(int, input().rstrip().split())))
+
+    result = diagonalDifference(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
